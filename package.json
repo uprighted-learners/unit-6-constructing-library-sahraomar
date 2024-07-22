@@ -2,11 +2,11 @@
   "name": "constructing-library",
   "version": "1.0.0",
   "description": "To practice Create, Read, Update, Delete functionality with MongoDB `mongosh` methods.",
-  "main": "index.js",
+  "main": "client.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node client.js",
-    "dev": "nodemon"
+    "dev": "nodemon client.js"
   },
   "keywords": [],
   "author": "",

@@ -36,13 +36,12 @@ Your work will result in:
 
 ```js
 class Library {
-    constructor(dbUrl, dbName, collName) {
-      this.dbUrl = dbUrl;
-      this.dbName = dbName;
-      this.collName = collName;
-      this.dbClient;
-      
-    }
+  constructor(dbUrl, dbName, collName) {
+    this.dbUrl = dbUrl;
+    this.dbName = dbName;
+    this.collName = collName;
+    this.dbClient;
+  }
 }
 ```
 
@@ -89,7 +88,7 @@ Connected to database.
 ```
 
 ## Create The Async `collection` Method
- 
+
 - [ ] Beneath the async `test` method, create a new async method called `collection`.
 - [ ] Await `this.client()` and assign it to the client variable.
 - [ ] Pass in `this.dbName` to the `db` method on `client` and assign it to a variable named `db`.
@@ -118,7 +117,6 @@ Connected to database.
 }
 ```
 
-
 > **You are now ready to begin working with the `mongosh` methods on your collection.**
 
 ## Create The Async `allBooks` Method
@@ -128,7 +126,7 @@ Connected to database.
 - [ ] Return the result of the `find` method on `collection`, passing in an empty object as its argument.
 - [ ] In `client.js`, await and test the result of this method and assign it to the variable `allBooks`.
 - [ ] On `allBooks`, utilize the `forEach` method to print each book to the console.
-- [ ] *This method should display all documents in the `book` collection.*
+- [ ] _This method should display all documents in the `book` collection._
 
 ## Create The Async `findOneBook` Method
 
@@ -138,7 +136,7 @@ Connected to database.
 - [ ] Return the result of the find method on collection, passing in `docId` as the argument.
 - [ ] In `client.js`, await the result of the method passing in the `_id` string from a document in the collection and assign it to the variable `findOneBook`.
 - [ ] On `findOneBook`, utilize the `forEach` method to print the book to the console.
-- [ ] *This method should display one book whose _id matches the value passed in*.
+- [ ] _This method should display one book whose \_id matches the value passed in_.
 
 ## Create The Async `findManyBooks` Method
 
@@ -147,17 +145,19 @@ Connected to database.
 - [ ] Return the result of `find` method on `collection`, passing in `query` as its argument.
 - [ ] In `client.js`, await and test the result of the method, referring to the [MongoDB documentation](https://www.mongodb.com/docs/manual/reference/method/db.collection.find/) for the query syntax to pass as the argument. The key value pairs on the documents are valid querys. Assign the result to the `findManyBooks` variable.
 - [ ] On `findManyBooks`, utilize the `forEach` method to print each book to the console.
-- [ ] *This method should display all documents in the `books` collection that match the query.*
+- [ ] _This method should display all documents in the `books` collection that match the query._
 
 ## Create The Async `addBook` Method
+
 - [ ] Create the async `addBook` method on `Library` with a parameter of `info`.
 - [ ] Await `this.collection()` and assign it to a `collection` variable.
 - [ ] Pass in `info` to the `insertOne` method on `collection` and await the result.
 - [ ] Console log a message to the user informing them their book was successfully added.
 - [ ] Test the result of this method in `client.js`, referring to the [MongoDB documentation](https://www.mongodb.com/docs/manual/reference/method/db.collection.insertOne/) for the format syntax to pass as the argument. The new book should have the same key value pairs as the original books.
-- [ ] *This method should insert a new document 'book' into the `books` collection.*
+- [ ] _This method should insert a new document 'book' into the `books` collection._
 
 ## Create The Async `changeBook` Method
+
 - [ ] Create the async `changeBook` method on `Library` with two parameters, id and newInfo.
 - [ ] Pass in id to `new ObjectId` and assign it to the `mongoId` variable.
 - [ ] Create a new object that utilizes the `$set` update operator as its key and newInfo as its value. Assign it to the `infoObj` variable. Refer to the [MongoDB documentation](https://www.mongodb.com/docs/manual/reference/operator/update/set/) if needed.
@@ -165,24 +165,23 @@ Connected to database.
 - [ ] Await the result of the `updateOne` method on `collection`. The first argument will set the `_id` key to `mongoId` as its value within an object, the second argument will be `infoObj`.
 - [ ] Console log a message to the user informing them their book was successfully updated.
 - [ ] Await and test the result of this method in `client.js`. The first argument should be the id string of the document you want to change, and the second argument should be an object containing the key you want to change with its new value.
-- [ ] *This method should update the targeted properties on the targeted document.*
+- [ ] _This method should update the targeted properties on the targeted document._
 
 ## Create The Async `removeBook` Method
 
-- [ ] Create the async `removeBook` method on `Library` with the parameter id. 
+- [ ] Create the async `removeBook` method on `Library` with the parameter id.
 - [ ] Pass in id to `new ObjectId` and assign it to the `mongoId` variable.
 - [ ] Await `this.collection()` and assign it to a `collection` variable.
 - [ ] Await the result of the `deleteOne` method on `collection`, passing in as argument an object containing `_id` as a key and `mongoId` as a variable.
 - [ ] Console log a message to the user informing them their book was successfully removed.
 - [ ] Await and test the result of this method in `client.js`, passing in the id string of the document you want to remove.
-- [ ] *This method should remove the targeted document from the collection and database.*
-
+- [ ] _This method should remove the targeted document from the collection and database._
 
 ## Going Further
 
 - The `addBook` method accepts any info, regardless if it matches the shape of the other documents. How could you prevent this?
 - The `updateBook` method will have various bugs dependent upon the user mistake. How can you prevent the following:
-    - If the id is incorrect, Node will either throw an error or give a false acceptance message.
-    - If there is no key given to update, Node will throw an error.
-    - If the key does not exist on the given document, a new key value pair will be created on the document along with a false acceptance message.
+  - If the id is incorrect, Node will either throw an error or give a false acceptance message.
+  - If there is no key given to update, Node will throw an error.
+  - If the key does not exist on the given document, a new key value pair will be created on the document along with a false acceptance message.
 - If multiple methods are invoked in the program, they each deliver a successful connection message. How can you print the successful connection message only once per program execution?
